@@ -25,7 +25,7 @@ class ContactListTableViewController: UITableViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		fetchContactsAndReload()
+		tableView.reloadData()
 	}
 	
 	func fetchContactsAndReload() {
