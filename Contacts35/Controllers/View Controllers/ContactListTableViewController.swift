@@ -18,13 +18,13 @@ class ContactListTableViewController: UITableViewController {
 	}
 	override func viewDidLoad() {
         super.viewDidLoad()
+		self.searchBar.delegate = self
 		fetchContactsAndReload()
     }
 	//MARK: -Helper Methods
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		self.searchBar.delegate = self
 		fetchContactsAndReload()
 	}
 	
@@ -44,9 +44,9 @@ class ContactListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
 		let contact = ContactController.shared.contacts[indexPath.row]
 		cell.textLabel?.text = contact.name
-		if contact.phoneNumber == "" {
+		if contact.phoneNumber == "" && contact.email != ""{
 			cell.detailTextLabel?.text = contact.email
-		} else if contact.email == ""{
+		} else if contact.email == "" && contact.phoneNumber != ""{
 			cell.detailTextLabel?.text = contact.phoneNumber
 		} else {
 			cell.detailTextLabel?.text = "Nothing other then name available"
@@ -78,7 +78,7 @@ class ContactListTableViewController: UITableViewController {
 		//Setting Custom Back Button Text
 		navigationItem.backBarButtonItem = UIBarButtonItem(
 			title: "Cancel", style: .plain, target: nil, action: nil)
-		if segue.identifier == "toContactDetailVC" {
+		if segue.identifier == "toContactDetaillVC" {
 			guard let indexPath = tableView.indexPathForSelectedRow,
 				  let destinationVC = segue.destination as? ContactDetailViewController else { return }
 			let selectedContact = ContactController.shared.contacts[indexPath.row]

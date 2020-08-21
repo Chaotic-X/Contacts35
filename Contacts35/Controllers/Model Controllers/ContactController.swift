@@ -43,6 +43,7 @@ class ContactController {
 			guard let records = records else { return completion(.failure(.couldNotUnWrap))}
 			let contacts = records.compactMap({Contact(ckRecord: $0)})
 			print("Successfully completed retrieving Contacts")
+			self.contacts = contacts
 			completion(.success(contacts))
 		}
 	}

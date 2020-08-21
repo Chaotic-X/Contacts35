@@ -47,7 +47,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ToH-3E-r8T" kind="show" identifier="toContactDetialVC" id="GsG-wW-mWH"/>
+                                    <segue destination="ToH-3E-r8T" kind="show" identifier="toContactDetaillVC" id="GsG-wW-mWH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
